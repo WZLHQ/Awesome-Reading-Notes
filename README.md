@@ -3,8 +3,7 @@
 * 2024-7-10, [Seed-ASR](https://arxiv.org/pdf/2407.04675): Understanding Diverse Speech and Contexts with LLM-based Speech Recognition
 
   * has used accent/dialect data
-* 2025-1-24, [FireRedASR](https://arxiv.org/pdf/2501.14350): pen-Source Industrial-Grade Mandarin Speech Recognition Models
-  from Encoder-Decoder to LLM Integration
+* 2025-1-24, [FireRedASR](https://arxiv.org/pdf/2501.14350): pen-Source Industrial-Grade Mandarin Speech Recognition Models from Encoder-Decoder to LLM Integration
 
   * has used accent/dialect data
 * 2025-10-5, [Fun-ASR](https://arxiv.org/pdf/2509.12508), Fun-ASR Technical Report.
@@ -27,3 +26,11 @@
 
 * **continuous** speech representations with text instructions.
   * [Seed-ASR](https://arxiv.org/pdf/2407.04675), [FireRedASR](https://arxiv.org/pdf/2501.14350), [Fun-ASR](https://arxiv.org/pdf/2509.12508)
+
+| Date      | Method                                    | Paper title |  |  |  |  |  |  |  |
+| --------- | ----------------------------------------- | ----------- | - | - | - | - | - | - | - |
+| 2024-7-10 | [Seed-ASR](https://arxiv.org/pdf/2407.04675) |             |  |  |  |  |  |  |  |
+|           |                                           |             |  |  |  |  |  |  |  |
+|           |                                           |             |  |  |  |  |  |  |  |
+|           |                                           |             |  |  |  |  |  |  |  |
+|           |                                           |             |  |  |  |  |  |  |  |
