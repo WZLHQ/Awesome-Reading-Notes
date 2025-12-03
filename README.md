@@ -1,36 +1,16 @@
 # ASR with LLMs
 
-* 2024-7-10, [Seed-ASR](https://arxiv.org/pdf/2407.04675): Understanding Diverse Speech and Contexts with LLM-based Speech Recognition
-
-  * has used accent/dialect data
-* 2025-1-24, [FireRedASR](https://arxiv.org/pdf/2501.14350): pen-Source Industrial-Grade Mandarin Speech Recognition Models from Encoder-Decoder to LLM Integration
-
-  * has used accent/dialect data
-* 2025-10-5, [Fun-ASR](https://arxiv.org/pdf/2509.12508), Fun-ASR Technical Report.
-
-  * Nothing innovative but massive data, a lot of unjustified fine-tuning steps, and the use of massive GPUs.
-
-### The connector between speech encoder and LLMs
-
-* two layers of transformer encoder, the output of Audio Encoder is fed into the connector.
-
-  * [Fun-ASR](https://arxiv.org/pdf/2509.12508)
-* downsampling module with a linear projection layer.
-
-  * [Seed-ASR](https://arxiv.org/pdf/2407.04675)
-* Linear-ReLU-Linear network with frame splicing operation to reduce the temporal resolution from 40ms to 80ms per frame
-
-  * [FireRedASR](https://arxiv.org/pdf/2501.14350)
-
-### The input type of LLM
-
-* **continuous** speech representations with text instructions.
-  * [Seed-ASR](https://arxiv.org/pdf/2407.04675), [FireRedASR](https://arxiv.org/pdf/2501.14350), [Fun-ASR](https://arxiv.org/pdf/2509.12508)
-
-| Date      | Method                                    | Paper title |  |  |  |  |  |  |  |
-| --------- | ----------------------------------------- | ----------- | - | - | - | - | - | - | - |
-| 2024-7-10 | [Seed-ASR](https://arxiv.org/pdf/2407.04675) |             |  |  |  |  |  |  |  |
-|           |                                           |             |  |  |  |  |  |  |  |
-|           |                                           |             |  |  |  |  |  |  |  |
-|           |                                           |             |  |  |  |  |  |  |  |
-|           |                                           |             |  |  |  |  |  |  |  |
+| ID   | Date       | Method        | Ranking | ASR only | Institute               | Code link                                                    | Paper Link                               | Paper title                                                  | Connector  between speech encoder and LLMs                   | Speech encoder | Strategy                                                     | Input type of  LLM | Data volume for  ASR      |
+| ---- | ---------- | ------------- | ------- | -------- | ----------------------- | ------------------------------------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------- | ------------------------------------------------------------ | ------------------ | ------------------------- |
+|      |            |               |         |          |                         |                                                              |                                          |                                                              |                                                              |                |                                                              |                    |                           |
+| 1    | 2023/6/15  | Macaw-LLM     | 1       | ×        | Dublin City  University | [Code](https://github.com/lyuchenyang/Macaw-LLM)             | [Link](https://arxiv.org/pdf/2306.09093) | Macaw-LLM:  Multi-Modal Language Modeling with Image, Audio, Video, and Text Integration | Multi-head  cross-attention (multi-modal features serve as the query  and the weights of LlaMA embedding layer as the key and value) | Whisper        |                                                              |                    |                           |
+| 2    | 2023/7/21  | Yassir (name) | 3       | √        | Meta                    | ×                                                            | [Link](https://arxiv.org/pdf/2307.11795) | Prompting  Large Language Models with Speech Recognition Abilities | Downsampling module +  linear projector                      | SFT            | Fixed audio encoder  (?)+learnable connector+learnable LoRA of LLM | Continuous         | 50K+ hours                |
+| 3    | 2023/10/20 | SALMONN       | 2       | ×        | Bytedance               | [Code](https://github.com/bytedance/SALMONN)                 | [Link](https://arxiv.org/pdf/2310.13289) | Salmonn:  Towards generic hearing abilities for large language models | Q-Former (https://proceedings.mlr.press/v202/li23q/li23q.pdf) | Whisper        | Fixed audio  encoder+learnable connector+learnable LoRA of LLM | Continuous (?)     | 1.2K hours                |
+| 4    | 2023/11/21 | Qwen-Audio    | 2       | ×        | Alibaba                 | [Code](https://github.com/QwenLM/Qwen-Audio)                 | [URL](https://arxiv.org/pdf/2311.07919)  | Qwen-Audio:  Advancing Universal Audio Understanding via Unified Large-Scale  Audio-Language Models | Downsampling module +  non-linear projector (?)              | Whisper        | Learnable audio  encoder+learnable connector+fixed LLM       | Continuous         | 53K hours                 |
+| 5    | 2024/2/13  | SLAM-ASR      | 5       | √        | Alibaba                 | [Code](https://github.com/X-LANCE/SLAM-LLM/blob/main/examples/asr_librispeech/README.md) | [URL](https://arxiv.org/pdf/2402.08846)  | An  Embarrassingly Simple Approach for LLM with Strong ASR Capacity | Downsampling module +  non-linear projector                  | SSL+SFT        | Fixed audio  encoder+learnable connector+fixed LLM           | Continuous         | 960 hours                 |
+| 6    | 2024/5/14  | SpeechVerse   | 2       | ×        | AWS                     | ×                                                            | [URL](https://arxiv.org/pdf/2405.08295?) | SpeechVerse:  A Large-scale Generalizable Audio Language Model | Downsampling module +  non-linear projector (?)              | SSL            | Fixed audio  encoder+learnable connector+learnable LoRA of LLM | Continuous         | 3K hours                  |
+| 7    | 2024/7/10  | Seed-ASR      | 2       | √        | Bytedance               | ×                                                            | [URL](https://arxiv.org/pdf/2407.04675)  | Seed-ASR:  Understanding Diverse Speech and Contexts with LLM-based Speech Recognition | Downsampling module +  non-linear projector (?)              | SSL+SFT        | Learnable audio  encoder+learnable connector+fixed LLM       | Continuous         | 7.7+ million hours        |
+| 8    | 2024/7/15  | Qwen2-Audio   | 2       | ×        | Alibaba                 | [Code](https://github.com/QwenLM/Qwen2-Audio)                | [URL](https://arxiv.org/pdf/2407.10759?) | Qwen2-Audio  Technical Report                                | Downsampling module +  non-linear projector (?)              | Whisper        | Learnable audio  encoder+learnable connector+learnable LLM (?) | Continuous (?)     | 370K+ hours               |
+| 9    | 2025/1/24  | FireRedASR    | 3       | √        | Xiaohongshu             | [Code](https://github.com/FireRedTeam/FireRedASR)            | [URL](https://arxiv.org/pdf/2501.14350)  | FireRedASR:  open-Source Industrial-Grade Mandarin Speech Recognition Models from  Encoder-Decoder to LLM Integration | Downsampling module +  non-linear projector                  | SFT            | Learnable audio  encoder+learnable connector+learnable LoRA of LLM | Continuous         | 81K hours  (high-quality) |
+| 10   | 2025/5/16  | LegoSLM       | 3       | ×        | Deepmind                | ×                                                            | [URL](https://arxiv.org/pdf/2505.11352)  | LegoSLM:  Connecting LLM with Speech Encoder using CTC Posteriors | CTC Layer+Non-linear  projector                              | SSL+SFT        | Fixed audio  encoder+learnable connector+learnable LLM       | Continuous         | 50K+ hours                |
+| 11   | 2025/10/5  | Fun-ASR       | 2       | √        | Alibaba                 | [Code ?](https://github.com/modelscope/FunASR)               | [URL](https://arxiv.org/pdf/2509.12508)  | Fun-ASR  Technical Report                                    | Two-layer transformer  encoder                               | SSL+SFT        | Learnable audio  encoder+learnable connector+learnable LoRA of LLM | Continuous         | 10+ million hours         |
