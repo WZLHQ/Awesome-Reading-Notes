@@ -1,12 +1,9 @@
 # 病理语音识别
 
-除了用病理数据微调预训练模型这类常见方法外，有发音特征反演、针对性网络模块、病理语音合成。发音特征指的是发音器官的动作描述，比如舌头运动规律、嘴唇开合角度等。
+除了用病理数据微调预训练模型这类常见方法外，有发音特征反演、针对性网络模块、病理语音合成、表征学习。发音特征指的是发音器官的动作描述，比如舌头运动规律、嘴唇开合角度等。
 
 * PPFR-conformer for dysarthria speech recognition: from phoneme perception to feature refinement. 属于哪类方法？
-* CFDRN: A Cognition-Inspired Feature Decomposition and Recombination Network for Dysarthric Speech Recognition. 怎么做的？
 * Overview of Automatic Speech Analysis and Technologies for Neurodegenerative Disorders: Diagnosis and Assistive Applications. 简单看看这篇论文在讲什么？迅速判断有没有读下去的必要。
-* Convolution-Augmented Transformers for Enhanced Speaker-Independent Dysarthric Speech Recognition. 这是TNNLS25年的论文，最好认真看看。
-* 
 
 ## 1. 发音特征反演
 
@@ -16,7 +13,9 @@
   * 音频特征转换后做为高斯混合模型(GMM)的参数，然后用GMM模型来逼近真实发音动作（如舌头位置、嘴唇开度等，做为标签）在给定音频特征下的概率分布。
   * 这篇论文主要是将反演后的发音特征与声学特征进行融合。
 
-![1772422551338](image/Dysarthricspeechrecognition/1772422551338.png)![1772422558162](image/Dysarthricspeechrecognition/1772422558162.png)
+![1772422551338](image/Dysarthricspeechrecognition/1772422551338.png)
+
+![1772422558162](image/Dysarthricspeechrecognition/1772422558162.png)
 
 ### 1.2 无监督条件下的发音特征反演
 
@@ -38,3 +37,9 @@
 * From Substitution to Complementarity: LeveragingBERT-VITS2 and Real Speech for Better ChineseDysarthric Speech Recognition
 * Accurate synthesis of dysarthric Speech for ASR data augmentation
 * Personalized Fine-Tuning with Controllable Synthetic Speech from LLM-Generated Transcripts for Dysarthric Speech Recognition
+
+## 1.4 表征学习
+
+* DyPCL: Dynamic Phoneme-level Contrastive Learning for Dysarthric Speech Recognition
+* Phone-purity guided discrete tokens for dysarthric speech recognition
+* PPFR-conformer for dysarthria speech recognition: from phoneme perception to feature refinement
