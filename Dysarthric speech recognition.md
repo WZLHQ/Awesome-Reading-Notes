@@ -34,7 +34,7 @@
 
 ## 1.3 病理语音合成
 
-* From Substitution to Complementarity: LeveragingBERT-VITS2 and Real Speech for Better ChineseDysarthric Speech Recognition
+* From Substitution to Complementarity: LeveragingBERT-VITS2 and Real Speech for Better Chinese Dysarthric Speech Recognition
 * Accurate synthesis of dysarthric Speech for ASR data augmentation
 * Personalized Fine-Tuning with Controllable Synthetic Speech from LLM-Generated Transcripts for Dysarthric Speech Recognition
 
