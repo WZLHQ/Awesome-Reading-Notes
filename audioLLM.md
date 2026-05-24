@@ -1,4 +1,10 @@
-# Audio Multi-task Learning
+# Audio LLM
+
+## Audio encoder
+
+## connector
+
+## Audio Multi-task Learning
 
 在语音交互过程中，能识别用户语音、情感以及音频事件等内容很重要。考虑到推理延迟等因素，为不同的任务训练多个孤立模型是不可行的。因此，如何用一个模型实现多种音频任务显得尤为重要。该模型可为LLM提供多任务表征，是人机顺畅交互中的关键一环。
 
