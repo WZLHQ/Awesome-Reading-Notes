@@ -7,6 +7,8 @@
 这种技术路线先训练音频模型，然后再将其与LLM串联成管道，最后再进行微调或者直接使用。相关的文献有如下。
 
 * 2024, **FunAudioLLM**, Tongyi SpeechTeam, citation 105, [PDF](https://arxiv.org/pdf/2407.04051?), [Code(Inference and FT)](https://github.com/FunAudioLLM/SenseVoice), [Model](https://huggingface.co/FunAudioLLM/SenseVoiceSmall)
-  * 潜在问题，延迟如何？用扩散模型来做会不会进一步降低推理延迟？
+  * 只支持Automatic Speech Recognition (ASR), Language Identification (LID), Speech Emotion Recognition (SER), and Audio Event Detection (AED)四种任务，其实还有很多其他语音任务，比如语者识别、语音分离等
+  * 当前的一种方案是将这个语音多任务模型的输出（即文本形式）输入到LLM，如果直接将语音特征作为LLM的输入，会显著增加计算负担，因为语音特征在时间维度上远大于文本。如何对语音特征进行有效的时间压缩，确保将其作为LLM输入时可以取得以文本输入时更好的效果？
+  * 延迟如何？用扩散模型来做会不会进一步降低推理延迟？
 
 ![1779439216309](image/audioLLM/1779439216309.png)
